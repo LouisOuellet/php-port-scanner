@@ -2,7 +2,7 @@
 
 class Scanner {
 
-	protected $Ports = [7,21,22,25,53,80,110,111,143,443,465,587,993,995,1194,3306,5222,5269,5280,8080,8081];
+	protected $Ports = [0,21,22,25,53,80,110,143,443,465,587,993,995,1194,8080];
 	protected $UDP = [9,42,67,68,69,82,123,138,161,319,320,370,500,512,513,514,517,518,520,521,525,533,560,561,623,698,750,752,753,1194,1234,1900,1985,3785,3799,5445,9000,20000];
 
 	public function __construct(){
@@ -15,16 +15,22 @@ class Scanner {
 	}
 
 	public function scanHost($host){
+		if (filter_var($host, FILTER_VALIDATE_IP)) {
+      $ip=$host;
+    } else {
+      $dns=dns_get_record($host, DNS_A);
+      $ip=$dns[0]['ip'];
+    }
 		foreach ($this->Ports as $port){
 			if($port != 0){
 				$service = getservbyport($port, 'tcp');
 				if(is_bool($service)){ $service = 'unknown'; }
 				$tB = microtime(true);
 				if(in_array($port,$this->UDP)){
-					$socket = @fsockopen('udp://'.$host, $port, $errno, $errstr, 2);
+					$socket = @fsockopen('udp://'.$ip, $port, $errno, $errstr, 2);
 					$protocol = 'udp';
 				} else {
-					$socket = @fsockopen($host, $port, $errno, $errstr, 2);
+					$socket = @fsockopen($ip, $port, $errno, $errstr, 2);
 					$protocol = 'tcp';
 				}
 				if (is_resource($socket)){
@@ -51,7 +57,7 @@ class Scanner {
 		    }
 			} else {
 				if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-					exec("ping -n 1 ".$host." | for /f \"tokens=5\" %a in ('findstr TTL=') do @echo %a", $latency);
+					exec("ping -n 1 ".$ip." | for /f \"tokens=5\" %a in ('findstr TTL=') do @echo %a", $latency);
 					if(isset($latency[0])){
 						$results[$host][$port] = [
 							'protocol' => 'tcp',
@@ -72,7 +78,7 @@ class Scanner {
 						];
 					}
 				} else {
-					exec("ping -c 1 " . $host . " | head -n 2 | tail -n 1 | awk '{print $7}'", $latency);
+					exec("ping -c 1 " . $ip . " | head -n 2 | tail -n 1 | awk '{print $7}'", $latency);
 					if(strpos($latency[0], 'time') !== false){
 						$results[$host][$port] = [
 							'protocol' => 'tcp',
@@ -95,16 +101,6 @@ class Scanner {
 				}
 			}
 		}
-		return $results;
+		return json_encode($results, JSON_PRETTY_PRINT);
 	}
 }
-
-$Scan = new Scanner;
-
-// echo json_encode($Scan->scanHost('webman-01.albcie.com'), JSON_PRETTY_PRINT);
-// echo json_encode($Scan->scanHost('google.com'), JSON_PRETTY_PRINT);
-$Scan->setPorts([0]);
-echo json_encode($Scan->scanHost('192.168.40.254'), JSON_PRETTY_PRINT);
-echo json_encode($Scan->scanHost('192.168.40.200'), JSON_PRETTY_PRINT);
-// $Scan->setPorts([7,3389,22]);
-// echo json_encode($Scan->scanHost('louis.ouellet.alb.com'), JSON_PRETTY_PRINT);
