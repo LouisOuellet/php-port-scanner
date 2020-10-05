@@ -34,6 +34,9 @@ $Scan->setPorts([0,80,443]);
 // Change the timeout value
 $Scan->setTimeout(1);
 
+// Change the UDP ports
+$Scan->setUDP([123,1194,3785]);
+
 // Scan with new settings
 echo $Scan->scanHost('google.com');
 

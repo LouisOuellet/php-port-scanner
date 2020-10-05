@@ -15,6 +15,10 @@ class Scanner {
 		$this->Ports = $ports;
 	}
 
+	public function setUDP($ports = []){
+		$this->UDP = $ports;
+	}
+
 	public function setTimeout($timeout = 2){
 		$this->Timeout = $timeout;
 	}
