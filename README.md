@@ -2,6 +2,9 @@
 This repository contains a PHP application that allows users to scan ports of an IP. It can also be used to ping a host using port 0 as demonstrated in the usage section.
 
 ## Changelog
+
+ * [2020-10-05] => Adding proper documentation
+ * [2020-10-05] => General Code optimization
  * [2020-10-05] => Scanner Class created
  * [2020-10-05] => repository created
 
