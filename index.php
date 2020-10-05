@@ -68,7 +68,7 @@ class Scanner {
 							'status' => 'down',
 							'errno' => '',
 							'errstr' => '',
-							'latency' => str_replace(['time=','time<','time>'],'',$latency)."ms",
+							'latency' => "ms",
 						];
 					}
 				} else {
