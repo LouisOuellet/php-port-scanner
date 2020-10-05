@@ -52,8 +52,7 @@ class Scanner {
 			} else {
 				if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
 					exec("ping -n 1 ".$host." | for /f \"tokens=5\" %a in ('findstr TTL=') do @echo %a", $latency);
-					var_dump($latency);
-					if(strpos($latency[0], 'time') !== false){
+					if(isset($latency[0])){
 						$results[$host][$port] = [
 							'protocol' => 'tcp',
 							'service' => 'icmp',
@@ -69,7 +68,7 @@ class Scanner {
 							'status' => 'down',
 							'errno' => '',
 							'errstr' => '',
-							'latency' => str_replace(['time=','time<','time>'],'',$latency[0]),
+							'latency' => str_replace(['time=','time<','time>'],'',$latency)."ms",
 						];
 					}
 				} else {
@@ -81,7 +80,7 @@ class Scanner {
 							'status' => 'up',
 							'errno' => '',
 							'errstr' => '',
-							'latency' => str_replace('time=','',$latency[0]).' ms',
+							'latency' => str_replace('time=','',$latency[0]).'ms',
 						];
 					} else {
 						$results[$host][$port] = [
@@ -90,7 +89,7 @@ class Scanner {
 							'status' => 'down',
 							'errno' => '',
 							'errstr' => '',
-							'latency' => str_replace('time=','',$latency[0]).' ms',
+							'latency' => str_replace('time=','',$latency[0]).'ms',
 						];
 					}
 				}
