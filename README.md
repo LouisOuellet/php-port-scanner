@@ -49,7 +49,7 @@ echo $Scan->scanHost('google.com');
             "status": "up",
             "errno": "",
             "errstr": "",
-            "latency": "12.6ms"
+            "latency": "16.4ms"
         },
         "21": {
             "protocol": "tcp",
@@ -57,7 +57,7 @@ echo $Scan->scanHost('google.com');
             "status": "closed",
             "errno": 110,
             "errstr": "Connection timed out",
-            "latency": "2001 ms"
+            "latency": "2001ms"
         },
         "22": {
             "protocol": "tcp",
@@ -65,7 +65,7 @@ echo $Scan->scanHost('google.com');
             "status": "closed",
             "errno": 110,
             "errstr": "Connection timed out",
-            "latency": "2002 ms"
+            "latency": "2002ms"
         },
         "25": {
             "protocol": "tcp",
@@ -73,7 +73,7 @@ echo $Scan->scanHost('google.com');
             "status": "closed",
             "errno": 110,
             "errstr": "Connection timed out",
-            "latency": "2001 ms"
+            "latency": "2001ms"
         },
         "53": {
             "protocol": "tcp",
@@ -81,7 +81,7 @@ echo $Scan->scanHost('google.com');
             "status": "closed",
             "errno": 110,
             "errstr": "Connection timed out",
-            "latency": "2002 ms"
+            "latency": "2002ms"
         },
         "80": {
             "protocol": "tcp",
@@ -89,7 +89,7 @@ echo $Scan->scanHost('google.com');
             "status": "open",
             "errno": 0,
             "errstr": "",
-            "latency": "6 ms"
+            "latency": "13ms"
         },
         "110": {
             "protocol": "tcp",
@@ -97,7 +97,7 @@ echo $Scan->scanHost('google.com');
             "status": "closed",
             "errno": 110,
             "errstr": "Connection timed out",
-            "latency": "2001 ms"
+            "latency": "2001ms"
         },
         "143": {
             "protocol": "tcp",
@@ -105,7 +105,7 @@ echo $Scan->scanHost('google.com');
             "status": "closed",
             "errno": 110,
             "errstr": "Connection timed out",
-            "latency": "2002 ms"
+            "latency": "2002ms"
         },
         "443": {
             "protocol": "tcp",
@@ -113,7 +113,7 @@ echo $Scan->scanHost('google.com');
             "status": "open",
             "errno": 0,
             "errstr": "",
-            "latency": "11 ms"
+            "latency": "9ms"
         },
         "465": {
             "protocol": "tcp",
@@ -121,7 +121,7 @@ echo $Scan->scanHost('google.com');
             "status": "closed",
             "errno": 110,
             "errstr": "Connection timed out",
-            "latency": "2002 ms"
+            "latency": "2000ms"
         },
         "587": {
             "protocol": "tcp",
@@ -129,7 +129,7 @@ echo $Scan->scanHost('google.com');
             "status": "closed",
             "errno": 110,
             "errstr": "Connection timed out",
-            "latency": "2002 ms"
+            "latency": "2003ms"
         },
         "993": {
             "protocol": "tcp",
@@ -137,7 +137,7 @@ echo $Scan->scanHost('google.com');
             "status": "closed",
             "errno": 110,
             "errstr": "Connection timed out",
-            "latency": "2002 ms"
+            "latency": "2002ms"
         },
         "995": {
             "protocol": "tcp",
@@ -145,7 +145,7 @@ echo $Scan->scanHost('google.com');
             "status": "closed",
             "errno": 110,
             "errstr": "Connection timed out",
-            "latency": "2001 ms"
+            "latency": "2001ms"
         },
         "1194": {
             "protocol": "udp",
@@ -153,7 +153,7 @@ echo $Scan->scanHost('google.com');
             "status": "open",
             "errno": 0,
             "errstr": "",
-            "latency": "0 ms"
+            "latency": "0ms"
         },
         "8080": {
             "protocol": "tcp",
@@ -161,7 +161,7 @@ echo $Scan->scanHost('google.com');
             "status": "closed",
             "errno": 110,
             "errstr": "Connection timed out",
-            "latency": "2002 ms"
+            "latency": "2002ms"
         }
     }
 }{
@@ -172,7 +172,7 @@ echo $Scan->scanHost('google.com');
             "status": "up",
             "errno": "",
             "errstr": "",
-            "latency": "11.9ms"
+            "latency": "13.6ms"
         },
         "80": {
             "protocol": "tcp",
@@ -180,7 +180,7 @@ echo $Scan->scanHost('google.com');
             "status": "open",
             "errno": 0,
             "errstr": "",
-            "latency": "22 ms"
+            "latency": "14ms"
         },
         "443": {
             "protocol": "tcp",
@@ -188,7 +188,7 @@ echo $Scan->scanHost('google.com');
             "status": "open",
             "errno": 0,
             "errstr": "",
-            "latency": "16 ms"
+            "latency": "11ms"
         }
     }
 }
