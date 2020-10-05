@@ -1,11 +1,12 @@
 # PHP Port scanner
-This repository contains a PHP application that allows users to scan ports of an IP.
+This repository contains a PHP application that allows users to scan ports of an IP. It can also be used to ping a host using port 0 as demonstrated in the usage section.
 
 ## Changelog
- * [2020-10-05] => Renamed debug mode to reporting mode. Kept the same switch (-v)
+ * [2020-10-05] => Scanner Class created
+ * [2020-10-05] => repository created
 
 ## Requirements
- * Web server with PHP support
+ * Web server with PHP support (WinNT or UNIX)
 
 ## Installation
 
