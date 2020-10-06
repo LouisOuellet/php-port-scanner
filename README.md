@@ -3,6 +3,7 @@ This repository contains a PHP application that allows users to scan ports of an
 
 ## Changelog
 
+ * [2020-10-05] => Added an ouput setting (a php array or JSON)
  * [2020-10-05] => Adding proper documentation
  * [2020-10-05] => General Code optimization
  * [2020-10-05] => Scanner Class created
@@ -26,7 +27,7 @@ require_once 'scanner.php';
 $Scan = new Scanner;
 
 // Scan with default settings
-echo $Scan->scanHost('google.com');
+var_dump($Scan->scanHost('google.com'));
 
 // Specify which ports to scan
 $Scan->setPorts([0,80,443]);
@@ -37,13 +38,243 @@ $Scan->setTimeout(1);
 // Change the UDP ports
 $Scan->setUDP([123,1194,3785]);
 
-// Scan with new settings
-echo $Scan->scanHost('google.com');
+// Scan with new settings and output set to JSON
+echo $Scan->scanHost('google.com', 'json');
 
 ```
 ### Sample
 
-```json
+```
+array(1) {
+  ["google.com"]=>
+  array(15) {
+    [0]=>
+    array(6) {
+      ["protocol"]=>
+      string(3) "tcp"
+      ["service"]=>
+      string(4) "icmp"
+      ["status"]=>
+      string(2) "up"
+      ["errno"]=>
+      string(0) ""
+      ["errstr"]=>
+      string(0) ""
+      ["latency"]=>
+      string(6) "2.78ms"
+    }
+    [21]=>
+    array(6) {
+      ["protocol"]=>
+      string(3) "tcp"
+      ["service"]=>
+      string(3) "ftp"
+      ["status"]=>
+      string(6) "closed"
+      ["errno"]=>
+      int(110)
+      ["errstr"]=>
+      string(20) "Connection timed out"
+      ["latency"]=>
+      string(6) "2002ms"
+    }
+    [22]=>
+    array(6) {
+      ["protocol"]=>
+      string(3) "tcp"
+      ["service"]=>
+      string(3) "ssh"
+      ["status"]=>
+      string(6) "closed"
+      ["errno"]=>
+      int(110)
+      ["errstr"]=>
+      string(20) "Connection timed out"
+      ["latency"]=>
+      string(6) "2002ms"
+    }
+    [25]=>
+    array(6) {
+      ["protocol"]=>
+      string(3) "tcp"
+      ["service"]=>
+      string(4) "smtp"
+      ["status"]=>
+      string(6) "closed"
+      ["errno"]=>
+      int(110)
+      ["errstr"]=>
+      string(20) "Connection timed out"
+      ["latency"]=>
+      string(6) "2001ms"
+    }
+    [53]=>
+    array(6) {
+      ["protocol"]=>
+      string(3) "tcp"
+      ["service"]=>
+      string(6) "domain"
+      ["status"]=>
+      string(6) "closed"
+      ["errno"]=>
+      int(110)
+      ["errstr"]=>
+      string(20) "Connection timed out"
+      ["latency"]=>
+      string(6) "2002ms"
+    }
+    [80]=>
+    array(6) {
+      ["protocol"]=>
+      string(3) "tcp"
+      ["service"]=>
+      string(4) "http"
+      ["status"]=>
+      string(4) "open"
+      ["errno"]=>
+      int(0)
+      ["errstr"]=>
+      string(0) ""
+      ["latency"]=>
+      string(3) "4ms"
+    }
+    [110]=>
+    array(6) {
+      ["protocol"]=>
+      string(3) "tcp"
+      ["service"]=>
+      string(4) "pop3"
+      ["status"]=>
+      string(6) "closed"
+      ["errno"]=>
+      int(110)
+      ["errstr"]=>
+      string(20) "Connection timed out"
+      ["latency"]=>
+      string(6) "2001ms"
+    }
+    [143]=>
+    array(6) {
+      ["protocol"]=>
+      string(3) "tcp"
+      ["service"]=>
+      string(5) "imap2"
+      ["status"]=>
+      string(6) "closed"
+      ["errno"]=>
+      int(110)
+      ["errstr"]=>
+      string(20) "Connection timed out"
+      ["latency"]=>
+      string(6) "2002ms"
+    }
+    [443]=>
+    array(6) {
+      ["protocol"]=>
+      string(3) "tcp"
+      ["service"]=>
+      string(5) "https"
+      ["status"]=>
+      string(4) "open"
+      ["errno"]=>
+      int(0)
+      ["errstr"]=>
+      string(0) ""
+      ["latency"]=>
+      string(3) "4ms"
+    }
+    [465]=>
+    array(6) {
+      ["protocol"]=>
+      string(3) "tcp"
+      ["service"]=>
+      string(3) "urd"
+      ["status"]=>
+      string(6) "closed"
+      ["errno"]=>
+      int(110)
+      ["errstr"]=>
+      string(20) "Connection timed out"
+      ["latency"]=>
+      string(6) "2001ms"
+    }
+    [587]=>
+    array(6) {
+      ["protocol"]=>
+      string(3) "tcp"
+      ["service"]=>
+      string(10) "submission"
+      ["status"]=>
+      string(6) "closed"
+      ["errno"]=>
+      int(110)
+      ["errstr"]=>
+      string(20) "Connection timed out"
+      ["latency"]=>
+      string(6) "2002ms"
+    }
+    [993]=>
+    array(6) {
+      ["protocol"]=>
+      string(3) "tcp"
+      ["service"]=>
+      string(5) "imaps"
+      ["status"]=>
+      string(6) "closed"
+      ["errno"]=>
+      int(110)
+      ["errstr"]=>
+      string(20) "Connection timed out"
+      ["latency"]=>
+      string(6) "2001ms"
+    }
+    [995]=>
+    array(6) {
+      ["protocol"]=>
+      string(3) "tcp"
+      ["service"]=>
+      string(5) "pop3s"
+      ["status"]=>
+      string(6) "closed"
+      ["errno"]=>
+      int(110)
+      ["errstr"]=>
+      string(20) "Connection timed out"
+      ["latency"]=>
+      string(6) "2002ms"
+    }
+    [1194]=>
+    array(6) {
+      ["protocol"]=>
+      string(3) "udp"
+      ["service"]=>
+      string(7) "openvpn"
+      ["status"]=>
+      string(4) "open"
+      ["errno"]=>
+      int(0)
+      ["errstr"]=>
+      string(0) ""
+      ["latency"]=>
+      string(3) "0ms"
+    }
+    [8080]=>
+    array(6) {
+      ["protocol"]=>
+      string(3) "tcp"
+      ["service"]=>
+      string(8) "http-alt"
+      ["status"]=>
+      string(6) "closed"
+      ["errno"]=>
+      int(110)
+      ["errstr"]=>
+      string(20) "Connection timed out"
+      ["latency"]=>
+      string(6) "2002ms"
+    }
+  }
+}
 {
     "google.com": {
         "0": {
@@ -52,39 +283,7 @@ echo $Scan->scanHost('google.com');
             "status": "up",
             "errno": "",
             "errstr": "",
-            "latency": "16.4ms"
-        },
-        "21": {
-            "protocol": "tcp",
-            "service": "ftp",
-            "status": "closed",
-            "errno": 110,
-            "errstr": "Connection timed out",
-            "latency": "2001ms"
-        },
-        "22": {
-            "protocol": "tcp",
-            "service": "ssh",
-            "status": "closed",
-            "errno": 110,
-            "errstr": "Connection timed out",
-            "latency": "2002ms"
-        },
-        "25": {
-            "protocol": "tcp",
-            "service": "smtp",
-            "status": "closed",
-            "errno": 110,
-            "errstr": "Connection timed out",
-            "latency": "2001ms"
-        },
-        "53": {
-            "protocol": "tcp",
-            "service": "domain",
-            "status": "closed",
-            "errno": 110,
-            "errstr": "Connection timed out",
-            "latency": "2002ms"
+            "latency": "3.53ms"
         },
         "80": {
             "protocol": "tcp",
@@ -92,23 +291,7 @@ echo $Scan->scanHost('google.com');
             "status": "open",
             "errno": 0,
             "errstr": "",
-            "latency": "13ms"
-        },
-        "110": {
-            "protocol": "tcp",
-            "service": "pop3",
-            "status": "closed",
-            "errno": 110,
-            "errstr": "Connection timed out",
-            "latency": "2001ms"
-        },
-        "143": {
-            "protocol": "tcp",
-            "service": "imap2",
-            "status": "closed",
-            "errno": 110,
-            "errstr": "Connection timed out",
-            "latency": "2002ms"
+            "latency": "4ms"
         },
         "443": {
             "protocol": "tcp",
@@ -116,82 +299,7 @@ echo $Scan->scanHost('google.com');
             "status": "open",
             "errno": 0,
             "errstr": "",
-            "latency": "9ms"
-        },
-        "465": {
-            "protocol": "tcp",
-            "service": "urd",
-            "status": "closed",
-            "errno": 110,
-            "errstr": "Connection timed out",
-            "latency": "2000ms"
-        },
-        "587": {
-            "protocol": "tcp",
-            "service": "submission",
-            "status": "closed",
-            "errno": 110,
-            "errstr": "Connection timed out",
-            "latency": "2003ms"
-        },
-        "993": {
-            "protocol": "tcp",
-            "service": "imaps",
-            "status": "closed",
-            "errno": 110,
-            "errstr": "Connection timed out",
-            "latency": "2002ms"
-        },
-        "995": {
-            "protocol": "tcp",
-            "service": "pop3s",
-            "status": "closed",
-            "errno": 110,
-            "errstr": "Connection timed out",
-            "latency": "2001ms"
-        },
-        "1194": {
-            "protocol": "udp",
-            "service": "openvpn",
-            "status": "open",
-            "errno": 0,
-            "errstr": "",
-            "latency": "0ms"
-        },
-        "8080": {
-            "protocol": "tcp",
-            "service": "http-alt",
-            "status": "closed",
-            "errno": 110,
-            "errstr": "Connection timed out",
-            "latency": "2002ms"
-        }
-    }
-}{
-    "google.com": {
-        "0": {
-            "protocol": "tcp",
-            "service": "icmp",
-            "status": "up",
-            "errno": "",
-            "errstr": "",
-            "latency": "13.6ms"
-        },
-        "80": {
-            "protocol": "tcp",
-            "service": "http",
-            "status": "open",
-            "errno": 0,
-            "errstr": "",
-            "latency": "14ms"
-        },
-        "443": {
-            "protocol": "tcp",
-            "service": "https",
-            "status": "open",
-            "errno": 0,
-            "errstr": "",
-            "latency": "11ms"
+            "latency": "3ms"
         }
     }
 }

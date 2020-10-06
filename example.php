@@ -7,7 +7,7 @@ require_once 'scanner.php';
 $Scan = new Scanner;
 
 // Scan with default settings
-echo $Scan->scanHost('google.com');
+var_dump($Scan->scanHost('google.com'));
 
 // Specify which ports to scan
 $Scan->setPorts([0,80,443]);
@@ -18,5 +18,5 @@ $Scan->setTimeout(1);
 // Change the UDP ports
 $Scan->setUDP([123,1194,3785]);
 
-// Scan with new settings
-echo $Scan->scanHost('google.com');
+// Scan with new settings and output set to JSON
+echo $Scan->scanHost('google.com', 'json');

@@ -23,7 +23,7 @@ class Scanner {
 		$this->Timeout = $timeout;
 	}
 
-	public function scanHost($host){
+	public function scanHost($host, $format = 'array'){
 		if (filter_var($host, FILTER_VALIDATE_IP)) {
       $ip=$host;
     } else {
@@ -78,6 +78,10 @@ class Scanner {
 				'latency' => $latency,
 			];
 		}
-		return json_encode($results, JSON_PRETTY_PRINT);
+		if($format != 'json'){
+			return $results;
+		} else {
+			return json_encode($results, JSON_PRETTY_PRINT);
+		}
 	}
 }
