@@ -23,7 +23,7 @@ class Scanner {
 		$this->Timeout = $timeout;
 	}
 
-	public function scanHost($host, $format = 'array'){
+	protected function scan($host){
 		if (filter_var($host, FILTER_VALIDATE_IP)) {
       $ip=$host;
     } else {
@@ -70,6 +70,7 @@ class Scanner {
 				}
 			}
 			$results[$host][$port] = [
+				'ip' => $ip,
 				'protocol' => $protocol,
 				'service' => $service,
 				'status' => $status,
@@ -77,6 +78,18 @@ class Scanner {
 				'errstr' => $errstr,
 				'latency' => $latency,
 			];
+		}
+		return $results;
+	}
+	public function scanHost($host, $format = 'array'){
+		if(is_array($host)){
+			$results = [];
+			foreach($host as $unique){
+				$result = $this->scan($unique);
+				$results = array_merge($results,$result);
+			}
+		} else {
+			$results = $this->scan($host);
 		}
 		if($format != 'json'){
 			return $results;
