@@ -3,6 +3,7 @@ This repository contains a PHP application that allows users to scan ports of an
 
 ## Changelog
 
+ * [2020-10-15] => Added support for scanning multiple hosts
  * [2020-10-05] => Added an ouput setting (a php array or JSON)
  * [2020-10-05] => Adding proper documentation
  * [2020-10-05] => General Code optimization
