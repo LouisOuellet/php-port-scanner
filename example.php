@@ -20,3 +20,14 @@ $Scan->setUDP([123,1194,3785]);
 
 // Scan with new settings and output set to JSON
 echo $Scan->scanHost('google.com', 'json');
+
+// Specify which host(s) to scan
+$list = [
+	'google.com',
+	'facebook.com',
+	'yahoo.com',
+	'duckduckgo.com',
+];
+
+// Scan multiple hosts and output set to JSON
+echo $Scan->scanHost($list, 'json');
